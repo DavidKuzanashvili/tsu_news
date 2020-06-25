@@ -1,21 +1,7 @@
 <?php
 
-$greeting = 'Hello PHP';
+require 'core/bootstrap.php';
 
-$names = [
-    'David',
-    'John',
-    'Jane'
-];
+$router = Router::load('routes.php');
 
-$person = [
-  'age' => 21,
-  'hair' => 'brown',
-  'name' => 'david'
-];
-
-$person['lastName'] = 'Doe';
-
-//die(var_dump($person));
-
-require 'index.view.php';
+require $router->direct(Request::uri());

@@ -10,26 +10,14 @@
 </head>
 <body>
 
-    <h1>
-        <?= $greeting; ?>
-    </h1>
-
     <ul>
-        <?php
-            foreach($names as $name) {
-                echo "<li>$name</li>";
-            }
-        ?>
+        <?php if (!empty($result)) {
+            foreach ($result as $news) : ?>
+                <li> <?= $news->title; ?> </li>
+            <?php endforeach;
+        } ?>
     </ul>
 
-    <ul>
-        <?php foreach($person as $feature => $val) : ?>
-            <li>
-                <strong><?= ucwords($feature); ?>:</strong>
-                <?= $val; ?>
-            </li>
-        <?php endforeach; ?>
-    </ul>
 
     <script src="/public/dist/app.js"></script>
 </body>
