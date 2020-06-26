@@ -1,1 +1,5 @@
-console.log("Hello world");
+import $ from 'jquery';
+
+$(document).ready(() => {
+   console.log('hello world');
+});

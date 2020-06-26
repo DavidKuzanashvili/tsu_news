@@ -1,0 +1,24 @@
+footer {
+  display: flex;
+  justify-content: space-between;
+  .page-navigation {
+    .nav {
+      &__list-item {
+        display: block;
+        padding: 0 20px 20px 0;
+      }
+    }
+  }
+
+  .contact-us {
+    ul {
+      li {
+        padding: 0 0 20px 0;
+        a {
+          color: white;
+        }
+      }
+    }
+  }
+}
+

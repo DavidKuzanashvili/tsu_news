@@ -1,3 +1,41 @@
+:root {
+  --grey: rgb(104,104,104); }
+
 body {
   margin: 0;
   padding: 0; }
+
+ul {
+  padding: 0; }
+  ul li {
+    list-style-type: none; }
+    ul li a {
+      text-decoration: none; }
+
+.page-space {
+  padding: 20px 5%; }
+
+/* Gradients */
+.grad-white-blue {
+  background-image: linear-gradient(to bottom right, blue, white); }
+
+footer {
+  display: flex;
+  justify-content: space-between; }
+  footer .page-navigation .nav__list-item {
+    display: block;
+    padding: 0 20px 20px 0; }
+  footer .contact-us ul li {
+    padding: 0 0 20px 0; }
+    footer .contact-us ul li a {
+      color: white; }
+
+.nav__list-item {
+  display: inline-block;
+  padding: 0 20px; }
+  .nav__list-item a {
+    color: white;
+    transition: all 0.5s linear;
+    transform: none; }
+  .nav__list-item:hover a {
+    transform: scale(1.5); }

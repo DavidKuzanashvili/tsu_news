@@ -1,5 +1,7 @@
 <?php require('partials/head.php'); ?>
 
-<h1>Index</h1>
+<main class="main-layout page-space">
+    <h1>Featured News</h1>
+</main>
 
 <?php require('partials/footer.php'); ?>

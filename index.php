@@ -1,7 +1,11 @@
 <?php
 
+require 'vendor/autoload.php';
 require 'core/bootstrap.php';
 
-$router = Router::load('routes.php');
-
-require $router->direct(Request::uri());
+try {
+    Router::load('routes.php')
+        ->direct(Request::uri(), Request::method());
+} catch (Exception $ex) {
+    die(var_dump($ex->getMessage()));
+}

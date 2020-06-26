@@ -10,4 +10,6 @@
 </head>
 <body>
 
-<?php require('menu/nav.php'); ?>
+<header class="page-space grad-white-blue">
+    <?php require('menu/nav.php'); ?>
+</header>

@@ -1,0 +1,19 @@
+{
+  "name": "vendor_name/tsu_news",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "david",
+      "email": "email@example.com"
+    }
+  ],
+  "require": {
+  },
+  "autoload": {
+    "classmap": [
+      "./"
+    ]
+  }
+}
