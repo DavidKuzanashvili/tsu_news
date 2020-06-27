@@ -1,0 +1,24 @@
+@font-face {
+    font-family: 'BPGVenuriCaps2020';
+    src: url('BPGVenuriCaps2020.eot');
+    src: url('BPGVenuriCaps2020.eot?#iefix') format('embedded-opentype'),
+        url('BPGVenuriCaps2020.woff2') format('woff2'),
+        url('BPGVenuriCaps2020.woff') format('woff'),
+        url('BPGVenuriCaps2020.ttf') format('truetype'),
+        url('BPGVenuriCaps2020.svg#BPGVenuriCaps2020') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BPGVenuri2020';
+    src: url('BPGVenuri2020.eot');
+    src: url('BPGVenuri2020.eot?#iefix') format('embedded-opentype'),
+        url('BPGVenuri2020.woff2') format('woff2'),
+        url('BPGVenuri2020.woff') format('woff'),
+        url('BPGVenuri2020.ttf') format('truetype'),
+        url('BPGVenuri2020.svg#BPGVenuri2020') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+

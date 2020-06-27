@@ -2,9 +2,9 @@
 
 return [
   'database' => [
-      'name' => 'tsuNews',
+      'name' => 'world',
       'username' => 'david',
-      'password' => '@Gr141oup$',
+      'password' => 'c,_.pDB7xDibUcfzQ-%N',
       'connection' => 'mysql:host=127.0.0.1',
       'options' => [
           PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING

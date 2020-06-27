@@ -4,6 +4,9 @@
             <a href="/">Home</a>
         </li>
         <li class="nav__list-item">
+            <a href="/news">News</a>
+        </li>
+        <li class="nav__list-item">
             <a href="/about">About</a>
         </li>
         <li class="nav__list-item">

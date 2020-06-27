@@ -1,0 +1,128 @@
+.subscribe-container {
+  * {
+    font-family: "Coustard", serif;
+  }
+
+  body {
+    background: #e04b5a;
+    overflow: hidden;
+    font-family: "Coustard", serif;
+  }
+
+  ::placeholder {
+    color: #e04b5a;
+    opacity: 0.8;
+  }
+
+  .subscribe-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .notify-btn.active {
+    height: 54px;
+    width: 290px;
+    transition: all 1s ease-out;
+    opacity: 0;
+  }
+
+  .form-group {
+    position: absolute;
+    transition: all 1s ease-out;
+    top: 50%;
+    left: 40%;
+  }
+
+  form {
+    position: relative;
+    width: 290px;
+  }
+
+  .btn,
+  input {
+    background: #fff;
+    color: #e04b5a;
+    outline: none;
+    border: 0;
+    width: 180px;
+    font-size: 20px;
+    height: 58px;
+    border-radius: 60px;
+    margin: 0;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    transition: all 0.3s ease-in;
+    position: absolute;
+    cursor: pointer;
+  }
+
+  input {
+    z-index: -1;
+    position: relative;
+    opacity: 0;
+  }
+
+  input.active {
+    width: 300px;
+    margin: 0 -60px;
+    transition: all 0.3s ease-out;
+    padding-right: 84px;
+    cursor: text;
+    z-index: 100;
+    opacity: 1;
+  }
+
+  input:not(:valid) + .submit-btn {
+    pointer-events: none;
+    color: #dddddd;
+  }
+
+  input:valid + .submit-btn {
+    pointer-events: visible;
+    color: #fff;
+  }
+
+  .notify-btn.active {
+    width: 300px;
+    margin: 0 -60px;
+    z-index: -1;
+    transition: all 0.3s ease-in;
+  }
+
+  .thanku-btn {
+    z-index: -1;
+    opacity: 0;
+    left: 0;
+  }
+
+  .thanku-btn.active {
+    z-index: 200;
+    opacity: 1;
+    transition: all 0.3s ease-in;
+  }
+
+  .submit-btn {
+    outline: none;
+    border: 0;
+    background: #e04b5a;
+    color: #fff;
+    position: absolute;
+    right: 20%;
+    top: 5px;
+    border-radius: 60px;
+    width: 80px;
+    height: 48px;
+    font-size: 16px;
+    opacity: 0;
+    z-index: -1;
+    transition: all 0.3s ease-out;
+  }
+
+  .submit-btn.active {
+    opacity: 1;
+    z-index: 100;
+    transition: all 0.3s ease-in;
+    cursor: pointer;
+  }
+}

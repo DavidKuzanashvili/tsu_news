@@ -4,5 +4,41 @@
 
 /* Gradients */
 .grad-white-blue {
-  background-image: linear-gradient(to bottom right, blue, white);
+  background-image: linear-gradient(to bottom right, #2c2cd2, white);
+}
+
+/* texts */
+p {
+  line-height: 1.5;
+}
+
+/* sizes */
+.half-sz {
+  width: 50%;
+}
+
+/* floats */
+.float-left {
+  float: left;
+}
+
+.float-right {
+  float: right;
+}
+
+/* spacing */
+.p-t-5 {
+  padding-top: 5%;
+}
+
+.p-r-5 {
+  padding-right: 5%;
+}
+
+.p-b-5 {
+  padding-bottom: 5%;
+}
+
+.p-l-5 {
+  padding-left: 5%;
 }

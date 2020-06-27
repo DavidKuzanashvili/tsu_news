@@ -5,13 +5,14 @@ class PagesController
 {
     public function home()
     {
-        try {
-            $result = App::get('database')->all('news');
-        } catch (Exception $e) {
-            die(var_dump($e->getMessage()));
-        }
+        //try {
+        //    $result = App::get('database')->all('news');
+        //} catch (Exception $e) {
+        //    die(var_dump($e->getMessage()));
+        //}
 
-        return view('index', compact('result'));
+        //return view('index', compact('result'));
+        return view('index');
     }
 
     public function about()

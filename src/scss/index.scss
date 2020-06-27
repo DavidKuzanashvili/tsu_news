@@ -1,6 +1,16 @@
+@import '~toastr';
 @import 'common/_variables.scss';
 @import './common/_reset.scss';
 @import './common/_general.scss';
+@import './common/_backgrounds.scss';
+@import './common/_flex-grid.scss';
 
 @import './components/footer/_footer.scss';
 @import './components/menu/_menu.scss';
+@import './components/sliders/swiper/_swiper.scss';
+@import './components/forms/_form.scss';
+@import './components/news-widget/_news-widget.scss';
+@import './components/covers/_default-cover.scss';
+@import './components/subscribe/_subscribe.scss';
+
+@import './pages/_about.scss';

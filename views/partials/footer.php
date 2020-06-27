@@ -20,6 +20,7 @@
             </li>
         </ul>
     </div>
+    <?php require('subscribe/subscribe.php'); ?>
 </footer>
 
 <script src="/public/dist/app.js"></script>

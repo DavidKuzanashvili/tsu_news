@@ -1,3 +1,21 @@
 :root {
-  --grey: rgb(104,104,104);
+  /*---Colors---*/
+  --primary-color: hsl(211, 73%, 50%);
+  --royal-blue: #5555d8;
+  --cornflower-blue: #6B9DE8;
+  --silver-chalice: #A2A2A2;
+  --mystic: #DAE1E9;
+  --chathams-blue: #153F65;
+  --picton-blue: #1eb4ee;
+  /*---Sizes---*/
+  --layout-spaces: 10%;
+  --header-height: 85px;
+  --header-logo-size: 120px;
+  --common-padding: 30px;
+  /*---Fonts---*/
+  --bpg: 'BPGArial2010';
+  --bpg-caps: 'BPGArialCaps2010';
+  --bpg-venuri: 'BPGVenuri2020';
+  --bpg-venuri-caps: 'BPGVenuriCaps2020';
+  --lemonada: 'Lemonada';
 }

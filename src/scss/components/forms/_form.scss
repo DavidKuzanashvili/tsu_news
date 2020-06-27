@@ -1,0 +1,121 @@
+.form-container {
+  h1 {
+    padding: 0 0 30px 0;
+    display: block;
+    font-family: Trebuchet MS;
+    text-transform: uppercase;
+  }
+
+  .margin {
+    margin: 0 15%;
+  }
+
+  *:focus {
+    outline: none;
+  }
+
+  .input-group {
+    position: relative;
+    margin-bottom: 30px;
+  }
+
+  .input-group label {
+    position: absolute;
+    top: 0;
+    left: 5px;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-family: Trebuchet MS;
+    color: #ccc;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .input-group input,
+  .input-group textarea {
+    display: block;
+    width: 280px;
+    border: none;
+    border-bottom: 1px solid #757575;
+    left: 25px;
+    padding: 5px;
+    font-family: Trebuchet MS;
+    background: none;
+    color: #ccc;
+  }
+
+  .input-group input:focus ~ label,
+  .input-group input:valid ~ label,
+  .input-group textarea:focus ~ label,
+  .input-group textarea:valid ~ label {
+    top: -20px;
+    transition: all 0.3s ease;
+    font-size: 13px;
+  }
+
+  .input-group input:focus ~ .inputBar:before,
+  .input-group input:focus ~ .inputBar:after,
+  .input-group textarea:focus ~ .inputBar:before,
+  .input-group textarea:focus ~ .inputBar:after {
+    width: 50%;
+  }
+
+  .input-group textarea {
+    height: 100px;
+    width: 280px;
+    overflow: auto;
+    resize: none;
+  }
+
+  .input-group .inputBar {
+    position: relative;
+    display: block;
+    width: 290px;
+  }
+
+  .input-group .inputBar:before,
+  .input-group .inputBar:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    transition: all 0.2s ease;
+  }
+
+  .input-group .inputBar:after {
+    right: 50%;
+  }
+
+  .input-group .inputBar:before {
+    left: 50%;
+  }
+
+  button {
+    background-color: white;
+    border: none;
+    padding: 15px 0;
+    margin: 0;
+    width: 290px;
+    color: #3c3c3c;
+    text-transform: uppercase;
+    font-family: Trebuchet MS;
+    font-size: 15px;
+    border-radius: 5px;
+    box-shadow: 0 6px #a1a1a1;
+    position: relative;
+    cursor: pointer;
+  }
+
+  button:hover {
+    box-shadow: 0 4px #a1a1a1;
+    top: 2px;
+  }
+
+  button:active {
+    top: 6px;
+    box-shadow: 0 0;
+  }
+}
