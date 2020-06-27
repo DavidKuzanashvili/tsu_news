@@ -1,7 +1,7 @@
 <?php require('partials/head.php'); ?>
 
 <main class="main-layout page-space">
-    <h3>About us</h3>
+    <h3 class="about-header">About us</h3>
     <p class="paragraph-with-image">
         <img src="/public/images/garden.png" alt="Garden">
         <h4>Where does it come from?</h4>

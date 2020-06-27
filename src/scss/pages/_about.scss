@@ -6,3 +6,14 @@
     float: left;
   }
 }
+
+
+h3.about-header {
+  color: black;
+  animation: example 1s infinite;
+}
+
+@keyframes example {
+  from {color: black;}
+  to {color: red;}
+}

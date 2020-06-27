@@ -6,7 +6,7 @@
     <div class="flex-row flex-space-between">
         <div class="half-sz p-r-5">
             <div class="float-right">
-                <?php require ('partials/forms/contact-form.php'); ?>
+                <?php require('partials/forms/contact-form.php'); ?>
             </div>
         </div>
         <div class="half-sz float-left p-l-5">

@@ -64,3 +64,17 @@
   overflow: hidden;
   font-size: 16px;
 }
+
+@media (max-width: 700px) {
+  .news-widget {
+    width: 48%;
+    margin: 10px 1%;
+  }
+}
+
+@media (max-width: 400px) {
+  .news-widget {
+    width: 100%;
+    margin: 0 0 20px 0;
+  }
+}
