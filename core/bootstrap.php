@@ -11,11 +11,4 @@ try {
     die(var_dump($e->getMessage()));
 }
 
-function view($name, $data = []) {
-    extract($data);
-    return require "app/views/{$name}.view.php";
-}
-
-function redirect($path) {
-    return header("Location: /{$path}");
-}
+require 'utils/utils.php';

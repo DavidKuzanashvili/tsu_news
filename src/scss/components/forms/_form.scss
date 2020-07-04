@@ -93,7 +93,7 @@
     left: 50%;
   }
 
-  button {
+  button, input[type='submit'] {
     background-color: white;
     border: none;
     padding: 15px 0;
@@ -109,12 +109,12 @@
     cursor: pointer;
   }
 
-  button:hover {
+  button:hover, input[type='submit']:hover {
     box-shadow: 0 4px #a1a1a1;
     top: 2px;
   }
 
-  button:active {
+  button:active, input[type='submit']:active {
     top: 6px;
     box-shadow: 0 0;
   }

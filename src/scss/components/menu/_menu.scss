@@ -1,3 +1,14 @@
+header.navigation {
+  display: flex;
+  justify-content: space-between;
+  .sign-x {
+    color: white;
+    a {
+      color: white;
+    }
+  }
+}
+
 .nav {
   &__list {
     //Styles

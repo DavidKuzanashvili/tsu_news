@@ -10,12 +10,17 @@
     <meta name="Reply-to" content="example@domain.com" />
     <meta name="Author" content="David Kuzanashvili">
     <title>Document</title>
-    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="/public/libs/swiper/swiper.min.css">
     <link rel="stylesheet" href="/public/fonts/fonts.css">
     <link rel="stylesheet" href="/public/dist/app.css">
 </head>
 <body>
 
-<header class="page-space grad-white-blue">
+<header class="page-space grad-white-blue navigation">
     <?php require('menu/nav.php'); ?>
+    <div class="sign-x">
+        <a href="/login">Sign in</a>
+        <span>/</span>
+        <a href="/registration">Sign up</a>
+    </div>
 </header>

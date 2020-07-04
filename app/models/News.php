@@ -3,6 +3,6 @@
 
 class News
 {
-    public $title;
-    public $description;
+    public string $title;
+    public string $description;
 }
