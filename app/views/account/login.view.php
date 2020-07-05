@@ -4,13 +4,17 @@
     <div class="form-wrapper">
         <form method="POST" action="/sign-in">
             <div class="input-group">
-                <input type="email" name="email" required />
+                <input type="email"
+                       name="email"
+                       required />
                 <span class="inputBar"></span>
                 <label>Email</label>
             </div>
 
             <div class="input-group">
-                <input type="password" name="password" required />
+                <input type="password"
+                       name="password"
+                       required />
                 <span class="inputBar"></span>
                 <label>Password</label>
             </div>

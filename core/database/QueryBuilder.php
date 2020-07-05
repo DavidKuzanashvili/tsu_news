@@ -13,19 +13,17 @@ class QueryBuilder
     /**
      * @param $table string
      * @param $condition string
+     * @param $clazz string
      * @return array
      */
-    public function all($table, $condition = '')
+    public function all($table, $condition, $clazz)
     {
-        $condition = isset($condition) ? ' where '.$condition : '';
-
-        dd($condition);
+        $condition = !empty($condition) ? ' where '.$condition : '';
 
         $statement = $this->pdo->prepare("select * from {$table}".$condition);
 
         $statement->execute();
-
-        return $statement->fetchAll(PDO::FETCH_CLASS);
+        return $statement->fetchAll(PDO::FETCH_CLASS, $clazz);
     }
 
     /**
@@ -69,16 +67,21 @@ class QueryBuilder
      * @return boolean
      */
     public function update($table, $parameters, $condition) {
+        $strParams = '';
+        foreach ($parameters as $key => $value) {
+            $strParams = $strParams."{$key}='{$value}', ";
+        }
+        $strParams = substr($strParams, 0, strlen($strParams) - 2).' ';
         $query = sprintf(
-            "update %s set %s=%s where ".$condition,
+            "update %s set %s where ".$condition,
             $table,
-            implode(', ', array_keys($parameters)),
-            ':' . implode(', :', array_keys($parameters))
+            $strParams
         );
+        //dd($query);
 
         $statement = $this->pdo->prepare($query);
 
-        return $statement->execute($parameters);
+        return $statement->execute();
     }
 
     /**

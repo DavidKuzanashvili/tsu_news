@@ -7,4 +7,9 @@ class ErrorController
     {
         return view('error/error');
     }
+
+    public function unauthorized()
+    {
+        return view('error/unauthorized');
+    }
 }

@@ -28,10 +28,19 @@
             </div>
 
             <div class="input-group">
+                <select name="role">
+                    <option value="user" selected>User</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <label style="display:block;">Role</label>
+            </div>
+
+            <div class="input-group">
                 <input type="password" name="password" required />
                 <span class="inputBar"></span>
                 <label>Password</label>
             </div>
+
             <input type="submit" name="registration" value="Sign up">
         </form>
     </div>

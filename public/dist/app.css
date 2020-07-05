@@ -425,22 +425,25 @@ header.navigation {
   transition: all 0.3s ease;
   font-size: 16px;
   font-family: Trebuchet MS;
-  color: #ccc;
+  color: #5555d8;
   font-weight: 500;
   text-transform: uppercase; }
 
+.form-container .input-group select,
 .form-container .input-group input,
 .form-container .input-group textarea {
   display: block;
   width: 280px;
   border: none;
-  border-bottom: 1px solid #757575;
+  border-bottom: 1px solid #6d9fe6;
   left: 25px;
   padding: 5px;
   font-family: Trebuchet MS;
   background: none;
-  color: #ccc; }
+  color: #5555d8; }
 
+.form-container .input-group select:focus ~ label,
+.form-container .input-group select:valid ~ label,
 .form-container .input-group input:focus ~ label,
 .form-container .input-group input:valid ~ label,
 .form-container .input-group textarea:focus ~ label,
@@ -449,6 +452,8 @@ header.navigation {
   transition: all 0.3s ease;
   font-size: 13px; }
 
+.form-container .input-group select:focus ~ .inputBar:before,
+.form-container .input-group select:focus ~ .inputBar:after,
 .form-container .input-group input:focus ~ .inputBar:before,
 .form-container .input-group input:focus ~ .inputBar:after,
 .form-container .input-group textarea:focus ~ .inputBar:before,
@@ -488,17 +493,17 @@ header.navigation {
   padding: 15px 0;
   margin: 0;
   width: 290px;
-  color: #3c3c3c;
+  color: #2a72de;
   text-transform: uppercase;
   font-family: Trebuchet MS;
   font-size: 15px;
   border-radius: 5px;
-  box-shadow: 0 6px #a1a1a1;
+  box-shadow: 0 6px #5555d8;
   position: relative;
   cursor: pointer; }
 
 .form-container button:hover, .form-container input[type='submit']:hover {
-  box-shadow: 0 4px #a1a1a1;
+  box-shadow: 0 4px #5555d8;
   top: 2px; }
 
 .form-container button:active, .form-container input[type='submit']:active {
@@ -691,6 +696,62 @@ header.navigation {
   z-index: 100;
   transition: all 0.3s ease-in;
   cursor: pointer; }
+
+.tsu-news-table-wrapper {
+  /* Zebra striping */
+  /*
+  Max width before this PARTICULAR table gets nasty
+  This query will take effect for any screen smaller than 760px
+  and also iPads specifically.
+  */ }
+  .tsu-news-table-wrapper table {
+    width: 750px;
+    border-collapse: collapse;
+    margin: 50px auto; }
+  .tsu-news-table-wrapper tr:nth-of-type(odd) {
+    background: #eee; }
+  .tsu-news-table-wrapper th {
+    background: #3498db;
+    color: white;
+    font-weight: bold; }
+  .tsu-news-table-wrapper td, .tsu-news-table-wrapper th {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: left;
+    font-size: 18px; }
+  @media only screen and (max-width: 760px), (min-device-width: 768px) and (max-device-width: 1024px) {
+    .tsu-news-table-wrapper {
+      /* Force table to not be like tables anymore */
+      /* Hide table headers (but not display: none;, for accessibility) */ }
+      .tsu-news-table-wrapper table {
+        width: 100%; }
+      .tsu-news-table-wrapper table, .tsu-news-table-wrapper thead, .tsu-news-table-wrapper tbody, .tsu-news-table-wrapper th, .tsu-news-table-wrapper td, .tsu-news-table-wrapper tr {
+        display: block; }
+      .tsu-news-table-wrapper thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px; }
+      .tsu-news-table-wrapper tr {
+        border: 1px solid #ccc; }
+      .tsu-news-table-wrapper td {
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 50%; }
+      .tsu-news-table-wrapper td:before {
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        /* Label the data */
+        content: attr(data-column);
+        color: #000;
+        font-weight: bold; } }
 
 .paragraph-with-image img {
   padding: 0 30px 30px 0;

@@ -19,22 +19,34 @@ class AccountController
             if (isset($email) && isset($password)) {
                 $user = App::get('database')->firstOrDefault('users', "email='{$email}'", 'User');
                 $verified = password_verify($password, $user->passwordHash);
-
                 if ($verified) {
-                    return view('profile');
+                    $authService = new AuthService;
+                    $authService->persistCredentials($email, $user->role);
+
+                    redirect('');
                 }
 
-                $model  = [
+                $data  = [
                   'email' => $email,
                   'password' => $password
                 ];
 
-                return view('login', compact('model'));
+                return view('account/login', compact('data'));
             }
             return redirect('error');
         } catch (Exception $e) {
             dd($e->getMessage());
         }
+    }
+
+    public function logOut()
+    {
+        if (isset($_COOKIE['identity'])) {
+            unset($_COOKIE['identity']);
+            setcookie('identity', null, -1, '/');
+        }
+
+        return view('index');
     }
 
     // GET
@@ -51,6 +63,8 @@ class AccountController
             $user = [
                 'firstName' => $_POST['firstName'],
                 'lastName' => $_POST['lastName'],
+                'userName' => $_POST['email'],
+                'role' => $_POST['role'],
                 'email' => $_POST['email'],
                 'phoneNumber' => $_POST['phoneNumber'],
                 'emailConfirmed' => 0,

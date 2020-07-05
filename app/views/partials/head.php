@@ -19,8 +19,15 @@
 <header class="page-space grad-white-blue navigation">
     <?php require('menu/nav.php'); ?>
     <div class="sign-x">
-        <a href="/login">Sign in</a>
-        <span>/</span>
-        <a href="/registration">Sign up</a>
+        <?php if (!isset($_COOKIE['identity'])): ?>
+                <a href="/login">Sign in</a>
+                <span>/</span>
+                <a href="/registration">Sign up</a>
+        <?php else: ?>
+            <a href="/create-news">Create news</a>
+            <span>/</span>
+            <a href="/log-out">Log out</a>
+        <?php endif; ?>
     </div>
+
 </header>

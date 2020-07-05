@@ -17,12 +17,15 @@ class Router
     /**
      * @param string $uri
      * @param string $controller
-     * @param $callback
+     * @param $cb
      * @return void
      */
-    public function get($uri, $controller, $callback = null)
+    public function get($uri, $controller, $cb = null)
     {
-        if (isset($callback)) $callback();
+
+        if (!empty($cb) && Request::uri() == $uri) {
+            $cb();
+        }
 
         $this->routes['GET'][$uri] = $controller;
     }
@@ -30,12 +33,14 @@ class Router
     /**
      * @param string $uri
      * @param string $controller
-     * @param $callback
+     * @param $cb
      * @return void
      */
-    public function post($uri, $controller, $callback = null)
+    public function post($uri, $controller, $cb = null)
     {
-        if (isset($callback)) $callback();
+        if (!empty($cb) && Request::uri() == $uri) {
+            $cb();
+        }
 
         $this->routes['POST'][$uri] = $controller;
     }

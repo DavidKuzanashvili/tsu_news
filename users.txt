@@ -1,0 +1,5 @@
+Id/First name/Last name/email/email verified
+
+1/David/Kuzanashvili/ex@domain.com/verified
+2/John/doe/ex@fake.com/not yet
+5/Someone/doe/ex@fake1.com/verified

@@ -2,7 +2,7 @@
 
 class App
 {
-    protected static $registry;
+    protected static array $registry;
 
     public static function bind($key, $value)
     {
