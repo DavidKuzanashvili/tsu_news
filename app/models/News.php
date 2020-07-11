@@ -7,4 +7,5 @@ class News
     public string $title;
     public string $description;
     public string $createDate;
+    public string $image;
 }
