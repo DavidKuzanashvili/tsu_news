@@ -12,9 +12,20 @@
         <li class="nav__list-item">
             <a href="/contact">Contact</a>
         </li>
-        <?php if (!empty($_COOKIE['userRole']) && $_COOKIE['userRole'] == 'admin'): ?>
+        <?php if (isset($_COOKIE['userRole']) && $_COOKIE['userRole'] == 'admin'): ?>
             <li class="nav__list-item">
                 <a href="/users">Users</a>
+            </li>
+        <?php endif; ?>
+        <?php if (isset($_COOKIE['identity'])): ?>
+            <li class="nav__list-item">
+                <a href="/create-news">Create news</a>
+            </li>
+            <li class="nav__list-item">
+                <a href="/categories">Categories</a>
+            </li>
+            <li class="nav__list-item">
+                <a href="/tags">Tags</a>
             </li>
         <?php endif; ?>
     </ul>

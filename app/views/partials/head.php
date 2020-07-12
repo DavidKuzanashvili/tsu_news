@@ -24,8 +24,6 @@
                 <span>/</span>
                 <a href="/registration">Sign up</a>
         <?php else: ?>
-            <a href="/create-news">Create news</a>
-            <span>/</span>
             <a href="/log-out">Log out</a>
         <?php endif; ?>
     </div>

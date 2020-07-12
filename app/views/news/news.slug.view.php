@@ -2,7 +2,7 @@
 
     <main class="main-layout page-space">
         <?php if (!empty($news)): ?>
-            <section class="cover">
+            <section class="cover" style="background: lightblue url('/public/uploads/<?php echo $news->image; ?>') no-repeat center;">
                 <div>
                     <h1><?= $news->title; ?></h1>
                 </div>

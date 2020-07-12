@@ -20,7 +20,7 @@
             <?php if (!empty($users)) { ?>
                 <?php foreach ($users as $user): ?>
                     <tr>
-                        <td data-column="Twitter">
+                        <td data-column="ID">
                             <?= $user->id ?>
                         </td>
                         <td data-column="First Name">
@@ -42,6 +42,5 @@
         </table>
     </div>
 </main>
-
 
 <?php require('app/views/partials/footer.php'); ?>

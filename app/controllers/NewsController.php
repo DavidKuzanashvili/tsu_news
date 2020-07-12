@@ -24,40 +24,49 @@ class NewsController
     public function createNews()
     {
         try {
+            $categories = App::get('database')->all('news_categories', '', 'Category');
+            $tags = App::get('database')->all('news_tags', '', 'Tag');
+
             if (isset($_POST['createNews'])) {
                 $id = $_POST['id'];
-                $fileInfo = $this->uploadImage();
+                $data = [
+                    'title' => $_POST['title'],
+                    'description' => $_POST['description'],
+                    'categoryId' => $_POST['categoryId'],
+                    'pinnedToHomePage' => isset($_POST['pinnedToHomePage']) && $_POST['pinnedToHomePage'] == 'on'
+                        ? 1 : 0
+                ];
+                $fileName = $_POST['image'];
 
-                if (!empty($fileInfo['errorMessages'])) {
-                    $news = new News();
-                    $news->id = $id;
-                    $news->title = $_POST['title'];
-                    $news->description = $_POST['description'];
-                    $news->image = $fileInfo['fileName'];
-                    $fileErrors = $fileInfo['errorMessages'];
-                    $result = [
-                        'model' => $news,
-                        'errors' => $fileErrors
-                    ];
-                    return view("news/createNews", compact('result'));
+
+                if (!empty($_FILES['fileToUpload']['name'])) {
+                    $fileInfo = $this->uploadImage();
+                    if (isset($fileInfo['errorMessages']) && !empty($fileInfo['errorMessages'])) {
+                        $news = new News();
+                        $news->id = $id;
+                        $news->title = $_POST['title'];
+                        $news->description = $_POST['description'];
+                        $news->image = $fileInfo['fileName'];
+                        $news->categoryId = (int)$_POST['categoryId'];
+                        $news->pinnedToHomePage = isset($_POST['pinnedToHomePage']);
+                        $fileErrors = $fileInfo['errorMessages'];
+                        $result = [
+                            'model' => $news,
+                            'errors' => $fileErrors,
+                            'categories' => $categories,
+                            'tags' => $tags
+                        ];
+                        return view("news/createNews", compact('result'));
+                    }
+                    $fileName = $fileInfo['fileName'];
                 }
-
+                $data['image'] = $fileName;
                 if ($id == 0) {
-                    $data = [
-                        'title' => $_POST['title'],
-                        'description' => $_POST['description'],
-                        'createDate' =>  date('m/d/Y'),
-                        'image' => $fileInfo['fileName']
-                    ];
+                    $data['createDate'] =  date('m/d/Y');
 
-                    App::get('database')->add('news', $data);
+                    $result = App::get('database')->add('news', $data);
                 } else {
-                    $data = [
-                        'title' => $_POST['title'],
-                        'description' => $_POST['description'],
-                        'image' => $fileInfo['fileName']
-                    ];
-                    $r = App::get('database')->update('news', $data, "id='{$id}'");
+                    App::get('database')->update('news', $data, "id='{$id}'");
                 }
 
                 redirect('news');
@@ -66,8 +75,10 @@ class NewsController
                 $id = !empty($_GET['id']) ? $_GET['id'] : 0;
                 $news = App::get('database')->firstOrDefault('news', "id='{$id}'", 'News');
                 $result = [
-                  'model' => $news,
-                  'errors' => array()
+                    'model' => $news,
+                    'errors' => array(),
+                    'categories' => $categories,
+                    'tags' => $tags
                 ];
                 return view("news/createNews", compact('result'));
             }
@@ -80,8 +91,7 @@ class NewsController
         try {
             $id = $_GET['id'];
             if (!empty($id)) {
-                $r = App::get('database')->delete('news', "id='{$id}'");
-                //dd($r);
+                App::get('database')->delete('news', "id='{$id}'");
                 return redirect('news');
             }
         } catch (Exception $e) {
@@ -112,10 +122,10 @@ class NewsController
         }
 
         // Check if file already exists
-        if (file_exists($target_file)) {
-            array_push($errorMessages, "Sorry, file already exists.");
-            $uploadOk = 0;
-        }
+//        if (file_exists($target_file)) {
+//            array_push($errorMessages, "Sorry, file already exists.");
+//            $uploadOk = 0;
+//        }
 
         // Check file size
         if ($_FILES["fileToUpload"]["size"] > 500000) {
@@ -147,5 +157,36 @@ class NewsController
             'successMessages' => $messages,
             'fileName' => $fileName
         ];
+    }
+
+    private function updateTags($newsId, $tagsIds = array()) {
+        try {
+            $existingRelations = App::get('database')
+                ->all('news_to_news_tags', "newsId='{$newsId}'", 'NewsToTags');
+            $itemsToRemove = "";
+            $itemsToAdd = array();
+            foreach ($existingRelations as $existingRelation) {
+                if (!in_array($existingRelation->tagsId, $tagsIds)) {
+                    $itemsToRemove += "{$existingRelation->tagsId},";
+                } else {
+                    array_push($itemsToAdd, $existingRelation->tagsId);
+                }
+            }
+
+            $itemsToRemove = substr($itemsToRemove, 0, strlen($itemsToRemove) - 1);
+            App::get('database')
+                ->delete('news_to_news_tags', "tagsIds({$itemsToRemove}}");
+
+            foreach ($itemsToAdd as $tagsId) {
+                $data = [
+                    'tagsId' => $tagsId,
+                    'newsId' => $newsId
+                ];
+                App::get('database')->add('news_to_news_tags', $data);
+            }
+
+        } catch (Exception $e) {
+            dd($e->getMessage());
+        }
     }
 }

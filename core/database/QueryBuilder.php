@@ -72,6 +72,7 @@ class QueryBuilder
             $strParams = $strParams."{$key}='{$value}', ";
         }
         $strParams = substr($strParams, 0, strlen($strParams) - 2).' ';
+        //dd($strParams);
         $query = sprintf(
             "update %s set %s where ".$condition,
             $table,

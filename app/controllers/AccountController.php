@@ -46,7 +46,12 @@ class AccountController
             setcookie('identity', null, -1, '/');
         }
 
-        return view('index');
+        if (isset($_COOKIE['userRole'])) {
+            unset($_COOKIE['userRole']);
+            setcookie('userRole', null, -1, '/');
+        }
+
+        redirect('');
     }
 
     // GET

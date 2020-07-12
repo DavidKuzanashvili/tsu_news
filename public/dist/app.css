@@ -522,7 +522,6 @@ header.navigation {
 .news-widget
 .news-widget__image-block {
   min-height: 220px;
-  background: lightblue url("/public/images/duke.jpg") no-repeat center;
   background-size: cover;
   border-radius: 0 20px 0 20px; }
 
@@ -578,7 +577,6 @@ header.navigation {
     margin: 0 0 20px 0; } }
 
 .cover {
-  background: lightblue url("/public/images/duke.jpg") no-repeat center;
   background-size: cover;
   width: 100%;
   height: 250px;

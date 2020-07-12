@@ -5,14 +5,14 @@ class PagesController
 {
     public function home()
     {
-        //try {
-        //    $result = App::get('database')->all('news');
-        //} catch (Exception $e) {
-        //    die(var_dump($e->getMessage()));
-        //}
+        try {
+            $news = App::get('database')->all('news', "pinnedToHomePage=1", 'News');
 
-        //return view('index', compact('result'));
-        return view('index');
+            return view('index', compact('news'));
+        } catch (Exception $e) {
+            die(var_dump($e->getMessage()));
+        }
+
     }
 
     public function about()
