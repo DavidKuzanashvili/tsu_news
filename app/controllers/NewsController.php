@@ -50,11 +50,18 @@ class NewsController
                         $news->categoryId = (int)$_POST['categoryId'];
                         $news->pinnedToHomePage = isset($_POST['pinnedToHomePage']);
                         $fileErrors = $fileInfo['errorMessages'];
+
+                        $assignedTags = App::get('database')
+                            ->all('news_to_news_tags', "newsId='{$id}'", 'NewsToTags');
+                        $assignedTagsIds = array_map(function($item) {
+                            return $item->tagsId;
+                        }, $assignedTags);
                         $result = [
                             'model' => $news,
                             'errors' => $fileErrors,
                             'categories' => $categories,
-                            'tags' => $tags
+                            'tags' => $tags,
+                            'assignedTags' => $assignedTagsIds
                         ];
                         return view("news/createNews", compact('result'));
                     }
@@ -67,18 +74,26 @@ class NewsController
                     $result = App::get('database')->add('news', $data);
                 } else {
                     App::get('database')->update('news', $data, "id='{$id}'");
+                    $this->updateTags($id, $_POST['tagIds']);
                 }
 
                 redirect('news');
             }
             else {
                 $id = !empty($_GET['id']) ? $_GET['id'] : 0;
+                $assignedTags = App::get('database')
+                    ->all('news_to_news_tags', "newsId='{$id}'", 'NewsToTags');
+                $assignedTagsIds = array_map(function($item) {
+                    return $item->tagsId;
+                }, $assignedTags);
+
                 $news = App::get('database')->firstOrDefault('news', "id='{$id}'", 'News');
                 $result = [
                     'model' => $news,
                     'errors' => array(),
                     'categories' => $categories,
-                    'tags' => $tags
+                    'tags' => $tags,
+                    'assignedTags' => $assignedTagsIds
                 ];
                 return view("news/createNews", compact('result'));
             }
@@ -161,21 +176,33 @@ class NewsController
 
     private function updateTags($newsId, $tagsIds = array()) {
         try {
+
             $existingRelations = App::get('database')
                 ->all('news_to_news_tags', "newsId='{$newsId}'", 'NewsToTags');
+
+            $existingIds = array_map(function ($item) {
+                return $item->id;
+            }, $existingRelations);
             $itemsToRemove = "";
             $itemsToAdd = array();
-            foreach ($existingRelations as $existingRelation) {
-                if (!in_array($existingRelation->tagsId, $tagsIds)) {
-                    $itemsToRemove += "{$existingRelation->tagsId},";
-                } else {
-                    array_push($itemsToAdd, $existingRelation->tagsId);
+
+            foreach ($existingIds as $tagId) {
+                $stringValue = strval($tagId);
+                if (!in_array($stringValue, $tagsIds)) {
+                    $itemsToRemove .= '('.$stringValue.'),';
+                }
+            }
+            foreach ($tagsIds as $tagId) {
+                if (!in_array((int)$tagId, $existingIds)) {
+                    array_push($itemsToAdd, $tagId);
                 }
             }
 
-            $itemsToRemove = substr($itemsToRemove, 0, strlen($itemsToRemove) - 1);
-            App::get('database')
-                ->delete('news_to_news_tags', "tagsIds({$itemsToRemove}}");
+            if (!empty($itemsToRemove)) {
+                $itemsToRemove = substr($itemsToRemove, 0, strlen($itemsToRemove) - 1);
+                App::get('database')
+                    ->delete('news_to_news_tags', "(id) in ({$itemsToRemove})");
+            }
 
             foreach ($itemsToAdd as $tagsId) {
                 $data = [
@@ -184,7 +211,6 @@ class NewsController
                 ];
                 App::get('database')->add('news_to_news_tags', $data);
             }
-
         } catch (Exception $e) {
             dd($e->getMessage());
         }

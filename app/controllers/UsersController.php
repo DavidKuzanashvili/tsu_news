@@ -13,6 +13,16 @@ class UsersController
         }
     }
 
+    public function privateInfo()
+    {
+        try {
+            $privateInfo = App::get('database')->firstOrDefault('user_private_info', "userId='{$_GET['id']}'", 'UserPrivateInfo');
+            return view('users/privateInfo', compact('privateInfo'));
+        } catch (Exception $e) {
+            dd($e->getMessage());
+        }
+    }
+
     public function export()
     {
         try {

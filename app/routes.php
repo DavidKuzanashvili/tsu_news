@@ -26,6 +26,9 @@ if (!empty($router)) {
     $router->get('users', 'UsersController@index', function() {
         Authorization::Authorize('admin');
     });
+    $router->get('user-private-info', 'UsersController@privateInfo', function() {
+        Authorization::Authorize();
+    });
     $router->get('export-users', 'UsersController@export', function() {
         Authorization::Authorize('admin');
     });
@@ -50,6 +53,13 @@ if (!empty($router)) {
         Authorization::Authorize('admin');
     });
 
+    $router->get('contacts', 'ContactController@index', function() {
+        Authorization::Authorize();
+    });
+    $router->get('subscribers', 'SubscribersController@index', function() {
+        Authorization::Authorize();
+    });
+
     // Post Routes
     $router->post('create-news', 'NewsController@createNews', function() {
         Authorization::Authorize();
@@ -65,4 +75,7 @@ if (!empty($router)) {
     $router->post('create-tag', 'TagsController@create', function() {
         Authorization::Authorize();
     });
+
+    $router->post('send', 'ContactController@send');
+    $router->post('subscribe', 'SubscribersController@subscribe');
 }

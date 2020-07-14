@@ -3,3 +3,9 @@ Id/First name/Last name/email/email verified
 1/David/Kuzanashvili/ex@domain.com/verified
 2/John/doe/ex@fake.com/not yet
 5/Someone/doe/ex@fake1.com/verified
+6/New user/userman/userman@ex.com/not yet
+7/New user1/userman1/userman1@ex.com/not yet
+9/New user2/userman3/userman2@ex.com/not yet
+10/New user3/userman4/userman4@ex.com/not yet
+12/David 1/Kuzanashvili 1/ex123@domain.com/not yet
+14/David 123/Kuzanashvili 123/ex123456@domain.com/not yet

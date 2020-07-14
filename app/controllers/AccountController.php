@@ -92,10 +92,21 @@ class AccountController
             );
 
             if ($result) {
-                return redirect('/login');
+                $user = App::get('database')->firstOrDefault('users', "email='{$user['email']}'", 'User');
+                $privateInfo = [
+                    'userId' => $user->id,
+                    'privateNumber' => $_POST['privateNumber'],
+                    'address' => $_POST['address']
+                ];
+
+                App::get('database')->add('user_private_info', $privateInfo);
+
+                redirect('login');
             }
 
             return redirect('error');
+        } catch (PDOException $e) {
+            dd($e->getMessage());
         } catch (Exception $e) {
             dd($e->getMessage());
         }

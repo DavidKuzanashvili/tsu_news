@@ -28,6 +28,18 @@
             </div>
 
             <div class="input-group">
+                <input type="text" name="privateNumber" required />
+                <span class="inputBar"></span>
+                <label>Private Number</label>
+            </div>
+
+            <div class="input-group">
+                <input type="text" name="address" required />
+                <span class="inputBar"></span>
+                <label>Address</label>
+            </div>
+
+            <div class="input-group">
                 <select name="role">
                     <option value="user" selected>User</option>
                     <option value="admin">Admin</option>

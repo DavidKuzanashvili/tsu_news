@@ -68,7 +68,7 @@
                         <select name="tagIds[]" multiple>
                             <?php if (!empty($result['tags'])) {
                                 foreach ($result['tags'] as $tag): ?>
-                                    <?php if (false): ?>
+                                    <?php if (in_array($tag->id, $result['assignedTags'])): ?>
                                         <option value="<?php echo $tag->id; ?>" selected>
                                             <?= $tag->title ?>
                                         </option>

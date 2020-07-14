@@ -27,6 +27,12 @@
             <li class="nav__list-item">
                 <a href="/tags">Tags</a>
             </li>
+            <li class="nav__list-item">
+                <a href="/subscribers">Subscribers</a>
+            </li>
+            <li class="nav__list-item">
+                <a href="/contacts">Contacts</a>
+            </li>
         <?php endif; ?>
     </ul>
 </nav>

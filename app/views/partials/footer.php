@@ -27,6 +27,6 @@
     <?php require('subscribe/subscribe.php'); ?>
 </footer>
 
-<script src="/public/dist/app.js"></script>
+<script src="/public/dist/app.js?v=1"></script>
 </body>
 </html>

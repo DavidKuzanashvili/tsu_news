@@ -91,7 +91,7 @@ class QueryBuilder
      * @return boolean
      */
     public function delete($table, $condition) {
-        $query = "delete from {$table} where $condition";
+        $query = "delete from {$table} where {$condition}";
 
         $statement = $this->pdo->prepare($query);
 

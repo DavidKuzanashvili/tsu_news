@@ -14,6 +14,7 @@
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Email verified</th>
+                <th>See additional info</th>
             </tr>
             </thead>
             <tbody>
@@ -34,6 +35,9 @@
                         </td>
                         <td data-column="Email verified">
                             <?= $user->emailConfirmed ? 'verified' : 'not yet' ?>
+                        </td>
+                        <td data-column="Private info">
+                            <a href="/user-private-info?id=<?php echo $user->id; ?>">See more</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

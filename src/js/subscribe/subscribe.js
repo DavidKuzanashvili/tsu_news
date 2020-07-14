@@ -12,7 +12,7 @@ const initSubscription = () => {
         $(this).removeClass("active");
         $("input").removeClass("active");
         $(".thanku-btn").addClass("active");
-        toastr.success('U have subscribed tsu news');
+        toastr.success('U have successfully subscribed TSU news');
     });
 };
 
