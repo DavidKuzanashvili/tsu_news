@@ -45,9 +45,9 @@ class TagsController
         try {
             $id = $_GET['id'];
             if (!empty($id)) {
-                $r = App::get('database')->delete('news_tags', "id='{$id}'");
-                //dd($r);
-                return redirect('tags');
+                App::get('database')->delete('news_tags', "id='{$id}'");
+                setcookie('Message', 'Remember u can only delete tags that aren\'t assigned to any news.');
+                redirect('tags');
             }
         } catch (Exception $e) {
             dd($e->getMessage());

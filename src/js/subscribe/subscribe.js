@@ -1,5 +1,4 @@
 import $ from 'jquery';
-import * as toastr from 'toastr';
 
 const initSubscription = () => {
     $(".notify-btn").click(function () {
@@ -12,7 +11,6 @@ const initSubscription = () => {
         $(this).removeClass("active");
         $("input").removeClass("active");
         $(".thanku-btn").addClass("active");
-        toastr.success('U have successfully subscribed TSU news');
     });
 };
 

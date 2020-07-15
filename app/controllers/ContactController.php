@@ -22,7 +22,8 @@ class ContactController
                 'message' => $_POST['message'],
             ];
             App::get('database')->add('contacts', $data);
-            redirect('contacts');
+            setcookie('Message', 'Ur message was sent');
+            redirect($_POST['redirectUrl']);
         } catch (Exception $e) {
             dd($e->getMessage());
         }

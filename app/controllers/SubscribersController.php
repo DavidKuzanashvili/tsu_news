@@ -20,7 +20,8 @@ class SubscribersController
                 'email' => $_POST['email']
             ];
             App::get('database')->add('subscribers', $data);
-            redirect('subscribers');
+            setcookie('Message', 'U have successfully subscribed tsu news');
+            redirect($_POST['redirectUrl']);
         } catch (Exception $e) {
             dd($e->getMessage());
         }

@@ -5,6 +5,7 @@
             <input id="input" type="email" name="email" placeholder="Email" required>
             <button type="submit" class="submit-btn">Send</button>
             <button type="button" class="btn thanku-btn">Thank You!</button>
+            <input type="hidden" name="redirectUrl" value="<?php echo Request::uri(); ?>">
         </form>
     </div>
 </div>

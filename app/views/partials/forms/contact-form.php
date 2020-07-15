@@ -18,7 +18,7 @@
                 <span class="inputBar"></span>
                 <label>Message</label>
             </div>
-
+            <input type="hidden" name="redirectUrl" value="<?php echo Request::uri(); ?>">
             <button type="submit">Send</button>
         </form>
     </div>

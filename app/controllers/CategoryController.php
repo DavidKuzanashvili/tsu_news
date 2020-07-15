@@ -45,6 +45,7 @@ class CategoryController
             $id = $_GET['id'];
             if (!empty($id)) {
                 App::get('database')->delete('news_categories', "id='{$id}'");
+                setcookie('Message', 'Remember u can only delete categories that aren\'t assigned to any news.');
                 redirect('categories');
             }
         } catch (Exception $e) {
